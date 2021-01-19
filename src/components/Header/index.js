@@ -4,17 +4,18 @@ import { Link } from 'react-router-dom';
 import { MdShoppingBasket } from 'react-icons/md';
 
 import { Container, Cart } from './styles';
+// import { Container } from './styles';
 
 import logo from '../../assets/images/logo.svg';
 
-function Header() {
+export default function Header() {
   return (
     <Container>
       <Link to="/">
         <img src={logo} alt="ValimShoes" />
       </Link>
 
-      <Cart to="/cart">
+      <Cart to="/Cart">
         <div>
           <strong>Meu Carrinho</strong>
           <span>4 itens</span>
@@ -24,5 +25,3 @@ function Header() {
     </Container>
   );
 }
-
-export default Header;
