@@ -16,6 +16,8 @@
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "reactotron-react-js": "^3.3.7",
+    "reactotron-redux": "^3.1.3",
     "redux": "^4.0.5",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
@@ -55,5 +57,10 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.2.1"
+  },
+  "@comment": {
+    "reactotron": "Ajuda ao debuggar estado com o Redux",
+    "axios": "Para consumir Api",
+    "polished": "possui funcao para alterar opacidade do botao de acordo com a cor do mesmo, dispensando ter que procurar uma cor padrao de acordo com a cor do componente"
   }
 }
