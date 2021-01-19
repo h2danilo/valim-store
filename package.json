@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
+    "immer": "^8.0.0",
     "polished": "^4.0.5",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -61,6 +62,7 @@
   "@comment": {
     "reactotron": "Ajuda ao debuggar estado com o Redux",
     "axios": "Para consumir Api",
-    "polished": "possui funcao para alterar opacidade do botao de acordo com a cor do mesmo, dispensando ter que procurar uma cor padrao de acordo com a cor do componente"
+    "polished": "possui funcao para alterar opacidade do botao de acordo com a cor do mesmo, dispensando ter que procurar uma cor padrao de acordo com a cor do componente",
+    "immer": "immer ferramenta ajuda no redux a lidar com obj e arrays que sao imutaveis dentro do react"
   }
 }

@@ -43,7 +43,7 @@ function Cart({ cart }) {
                 </div>
               </td>
               <td>
-                <strong>R$129,90</strong>
+                <strong>{product.amount * product.price}</strong>
               </td>
               <td>
                 <button type="button">
