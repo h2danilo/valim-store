@@ -40,6 +40,7 @@ function* addToCart({ id }) {
 
     // metodo put do saga é utilizado para disparar uma action
     yield put(addToCartSuccess(data));
+    // history.push('/cart');
     history.push('/cart');
   }
 }
