@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import api from '../../../services/api';
 import { formatPrice } from '../../../util/format';
 
-import { addToCartSuccess, updateAmount } from './actions';
+import { addToCartSuccess, updateAmountSuccess } from './actions';
 
 // * = funcionalidade do JS que chama generator, como se fosse um assync, no caso nao utilizou assync, devido, generator ser mais potente que o assync
 function* addToCart({ id }) {
@@ -25,7 +25,7 @@ function* addToCart({ id }) {
   }
 
   if (productExists) {
-    yield put(updateAmount(id, amount));
+    yield put(updateAmountSuccess(id, amount));
   } else {
     // yield = como se fosse o await do generator, td que vier após irá aguardar execucao.
     // call =  responsavel por chamar metodos. que sao assincronos e que retornar promisses.
@@ -42,8 +42,25 @@ function* addToCart({ id }) {
   }
 }
 
+function* updateAmount({ id, amount }) {
+  if (amount <= 0) return;
+
+  const stock = yield call(api.get, `/stock/${id}`);
+  const stockAmount = stock.data.amount;
+
+  if (amount > stockAmount) {
+    toast.error('Quantidade solicitada fora do estoque!');
+    return;
+  }
+
+  yield put(updateAmountSuccess(id, amount));
+}
+
 // all => cadastrar varios listners, que ficar ouvindo qdo uma action for disparada para disparar essa acao
 // takeLatest => se usuario clicar uma vez no botao para adicionar no carrinho e logo em seguida clicar novamente
 // antes da chamada api finalizar, o saga irá descartar a primeira chamada e executar a atual (adicionando uma vez só no carrinho).
 // takeLatest > 1º paramento = qual acao redux quer ouvir e 2º paramento = qual action/funcao quer disparar
-export default all([takeLatest('@cart/ADD_REQUEST', addToCart)]);
+export default all([
+  takeLatest('@cart/ADD_REQUEST', addToCart),
+  takeLatest('@cart/UPDATE_AMOUNT_REQUEST', updateAmount),
+]);
