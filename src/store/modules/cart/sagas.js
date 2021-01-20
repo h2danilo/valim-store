@@ -6,19 +6,30 @@ import { addToCartSuccess, updateAmount } from './actions';
 
 // * = funcionalidade do JS que chama generator, como se fosse um assync, no caso nao utilizou assync, devido, generator ser mais potente que o assync
 function* addToCart({ id }) {
-  // yield = como se fosse o await do generator, td que vier após irá aguardar execucao.
-  // call =  responsavel por chamar metodos. que sao assincronos e que retornar promisses.
-  const response = yield call(api.get, `/products/${id}`);
-
   // select => responsavel por buscar informacao dentro de um estado
   const productExists = yield select((state) =>
     state.cart.find((p) => p.id === id)
   );
 
+  const stock = yield call(api.get, `/stock/${id}`);
+
+  const stockAmount = stock.data.amount;
+  const currentAmount = productExists ? productExists.amount : 0;
+
+  const amount = currentAmount + 1;
+
+  if (amount > stockAmount) {
+    console.tron.warn('ERRO');
+    return;
+  }
+
   if (productExists) {
-    const amount = productExists.amount + 1;
     yield put(updateAmount(id, amount));
   } else {
+    // yield = como se fosse o await do generator, td que vier após irá aguardar execucao.
+    // call =  responsavel por chamar metodos. que sao assincronos e que retornar promisses.
+    const response = yield call(api.get, `/products/${id}`);
+
     const data = {
       ...response.data,
       amount: 1,
