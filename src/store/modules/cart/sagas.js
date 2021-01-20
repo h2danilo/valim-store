@@ -1,7 +1,8 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { call, select, put, all, takeLatest } from 'redux-saga/effects';
 import api from '../../../services/api';
+import { formatPrice } from '../../../util/format';
 
-import { addToCartSuccess } from './actions';
+import { addToCartSuccess, updateAmount } from './actions';
 
 // * = funcionalidade do JS que chama generator, como se fosse um assync, no caso nao utilizou assync, devido, generator ser mais potente que o assync
 function* addToCart({ id }) {
@@ -9,8 +10,24 @@ function* addToCart({ id }) {
   // call =  responsavel por chamar metodos. que sao assincronos e que retornar promisses.
   const response = yield call(api.get, `/products/${id}`);
 
-  // metodo put do saga é utilizado para disparar uma action
-  yield put(addToCartSuccess(response.data));
+  // select => responsavel por buscar informacao dentro de um estado
+  const productExists = yield select((state) =>
+    state.cart.find((p) => p.id === id)
+  );
+
+  if (productExists) {
+    const amount = productExists.amount + 1;
+    yield put(updateAmount(id, amount));
+  } else {
+    const data = {
+      ...response.data,
+      amount: 1,
+      priceFormatted: formatPrice(response.data.price),
+    };
+
+    // metodo put do saga é utilizado para disparar uma action
+    yield put(addToCartSuccess(data));
+  }
 }
 
 // all => cadastrar varios listners, que ficar ouvindo qdo uma action for disparada para disparar essa acao

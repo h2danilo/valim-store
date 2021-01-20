@@ -9,12 +9,9 @@ export default function cart(state = [], action) {
       // return [...state, { ...action.product, amount: 1 }]; //ex. sem utilizar produce do immer
       // abaixo exemplo utilizando produce do immer. draft seria uma copia do state que pode ser alterado e que após ser alterado o produce aplica esse draft como resultado final;
       return produce(state, (draft) => {
-        const productIndex = draft.findIndex((p) => p.id === action.product.id);
-        if (productIndex >= 0) {
-          draft[productIndex].amount += 1;
-        } else {
-          draft.push({ ...action.product, amount: 1 });
-        }
+        const { product } = action;
+
+        draft.push(product);
       });
     case '@cart/REMOVE':
       return produce(state, (draft) => {
