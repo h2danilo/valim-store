@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
+    "history": "^5.0.0",
     "immer": "^8.0.0",
     "polished": "^4.0.5",
     "prop-types": "^15.7.2",
@@ -69,6 +70,7 @@
     "immer": "immer ferramenta ajuda no redux a lidar com obj e arrays que sao imutaveis dentro do react",
     "redux-saga": "Middleware  que consegue intercepta actions, sempre que dispara uma action esse Middleware  pode entrar em acao, fazendo algum efeito colateral (side efect), tipo: asincrono, chamada api, acesso banco dados.  Ex. qdo adiciona um produto no carrinho, busca api dados complementares do produto, tipo: peso, tamanho, etc.   ",
     "reactotron-redux-saga": "plugin do saga para o reactotron",
-    "react-toastify": "biblioteca que mostra msg visual bonita, p exibir erros, msg de sucesso, ..."
+    "react-toastify": "biblioteca que mostra msg visual bonita, p exibir erros, msg de sucesso, ...",
+    "history": "biblioteca JS que serve para controlar parte de history API do navegador, que são as rotas que o react-router-dom utiliza"
   }
 }
