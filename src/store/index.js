@@ -10,7 +10,12 @@ import rootSaga from './modules/rootSaga';
 /* const enhancer =
   process.env.NODE_ENV === 'development' ? console.tron.createEnhancer() : null; */
 
-const sagaMiddleware = createSagaMiddleware();
+const sagaMonitor =
+  process.env.NODE_ENV === 'development'
+    ? console.tron.createSagaMonitor()
+    : null;
+
+const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
 // linha abaixo com o saga
 const enhancer =
