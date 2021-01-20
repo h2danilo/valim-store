@@ -5,7 +5,7 @@ import produce from 'immer';
 export default function cart(state = [], action) {
   // console.log(action);
   switch (action.type) {
-    case '@cart/ADD':
+    case '@cart/ADD_SUCCESS':
       // return [...state, { ...action.product, amount: 1 }]; //ex. sem utilizar produce do immer
       // abaixo exemplo utilizando produce do immer. draft seria uma copia do state que pode ser alterado e que após ser alterado o produce aplica esse draft como resultado final;
       return produce(state, (draft) => {

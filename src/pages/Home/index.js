@@ -29,7 +29,7 @@ class Home extends Component {
     this.setState({ products: data });
   }
 
-  handleAddProduct = (product) => {
+  handleAddProduct = (id) => {
     // dispatch => serve para disparar uma action ao redux, serve para dizer p redux que deseja fazer alguma acao
     // const { dispatch } = this.props;
 
@@ -41,8 +41,8 @@ class Home extends Component {
     // dispatch(CartActions.addToCart(product));
 
     // ex. 2, acima faz msm coisa, porem, abaixo codigo esta resumido devido a ter add no final do codigo => const mapDispatchToProps
-    const { addToCart } = this.props;
-    addToCart(product);
+    const { addToCartRequest } = this.props;
+    addToCartRequest(id);
   };
 
   render() {
@@ -59,7 +59,7 @@ class Home extends Component {
 
             <button
               type="button"
-              onClick={() => this.handleAddProduct(product)}
+              onClick={() => this.handleAddProduct(product.id)}
             >
               <div>
                 <MdAddShoppingCart size={16} color="#FFF" />{' '}

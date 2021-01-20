@@ -20,6 +20,7 @@
     "reactotron-react-js": "^3.3.7",
     "reactotron-redux": "^3.1.3",
     "redux": "^4.0.5",
+    "redux-saga": "^1.1.3",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
@@ -63,6 +64,7 @@
     "reactotron": "Ajuda ao debuggar estado com o Redux",
     "axios": "Para consumir Api",
     "polished": "possui funcao para alterar opacidade do botao de acordo com a cor do mesmo, dispensando ter que procurar uma cor padrao de acordo com a cor do componente",
-    "immer": "immer ferramenta ajuda no redux a lidar com obj e arrays que sao imutaveis dentro do react"
+    "immer": "immer ferramenta ajuda no redux a lidar com obj e arrays que sao imutaveis dentro do react",
+    "redux-saga": "Middleware  que consegue intercepta actions, sempre que dispara uma action esse Middleware  pode entrar em acao, fazendo algum efeito colateral (side efect), tipo: asincrono, chamada api, acesso banco dados.  Ex. qdo adiciona um produto no carrinho, busca api dados complementares do produto, tipo: peso, tamanho, etc.   "
   }
 }
