@@ -17,6 +17,7 @@
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-toastify": "^6.2.0",
     "reactotron-react-js": "^3.3.7",
     "reactotron-redux": "^3.1.3",
     "reactotron-redux-saga": "^4.2.3",
@@ -67,6 +68,7 @@
     "polished": "possui funcao para alterar opacidade do botao de acordo com a cor do mesmo, dispensando ter que procurar uma cor padrao de acordo com a cor do componente",
     "immer": "immer ferramenta ajuda no redux a lidar com obj e arrays que sao imutaveis dentro do react",
     "redux-saga": "Middleware  que consegue intercepta actions, sempre que dispara uma action esse Middleware  pode entrar em acao, fazendo algum efeito colateral (side efect), tipo: asincrono, chamada api, acesso banco dados.  Ex. qdo adiciona um produto no carrinho, busca api dados complementares do produto, tipo: peso, tamanho, etc.   ",
-    "reactotron-redux-saga": "plugin do saga para o reactotron"
+    "reactotron-redux-saga": "plugin do saga para o reactotron",
+    "react-toastify": "biblioteca que mostra msg visual bonita, p exibir erros, msg de sucesso, ..."
   }
 }
