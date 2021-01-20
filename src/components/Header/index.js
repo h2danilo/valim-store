@@ -7,7 +7,7 @@ import { MdShoppingBasket } from 'react-icons/md';
 import { Container, Cart } from './styles';
 // import { Container } from './styles';
 
-import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/images/logoValim.svg';
 
 function Header({ cartSize }) {
   // console.log(cart);
