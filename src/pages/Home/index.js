@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { MdAddShoppingCart } from 'react-icons/md';
@@ -12,24 +12,44 @@ import { ProductList } from './styles';
 
 // import { Container } from './styles';
 
-class Home extends Component {
-  constructor(props) {
+function Home({ amountCart, addToCartRequest }) {
+  // abaixo qdo utiliza classe extend { Component }
+  /* constructor(props) {
     super(props);
     this.state = {
       products: [],
     };
-  }
+  } */
 
-  async componentDidMount() {
+  // abaixo utilizando hooks
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function loadProducts() {
+      const response = await api.get('products');
+
+      const data = response.data.map((product) => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+      }));
+
+      setProducts(data);
+    }
+
+    loadProducts();
+  }, []);
+
+  // abaixo qdo utiliza classe extend { Component }
+  /* async componentDidMount() {
     const response = await api.get('products');
     const data = response.data.map((product) => ({
       ...product,
       priceFormatted: formatPrice(product.price),
     }));
     this.setState({ products: data });
-  }
+  } */
 
-  handleAddProduct = (id) => {
+  function handleAddProduct(id) {
     // dispatch => serve para disparar uma action ao redux, serve para dizer p redux que deseja fazer alguma acao
     // const { dispatch } = this.props;
 
@@ -41,38 +61,31 @@ class Home extends Component {
     // dispatch(CartActions.addToCart(product));
 
     // ex. 2, acima faz msm coisa, porem, abaixo codigo esta resumido devido a ter add no final do codigo => const mapDispatchToProps
-    const { addToCartRequest } = this.props;
+    // const { addToCartRequest } = this.props;
+
     addToCartRequest(id);
-  };
-
-  render() {
-    const { products } = this.state;
-    const { amountCart } = this.props;
-
-    return (
-      <ProductList>
-        {products.map((product) => (
-          <li key={product.id}>
-            <img src={product.image} alt={product.title} />
-            <strong>{product.title}</strong>
-            <span>{product.priceFormatted}</span>
-
-            <button
-              type="button"
-              onClick={() => this.handleAddProduct(product.id)}
-            >
-              <div>
-                <MdAddShoppingCart size={16} color="#FFF" />{' '}
-                {amountCart[product.id] || 0}
-              </div>
-
-              <span>ADICIONAR AO CARRINHO</span>
-            </button>
-          </li>
-        ))}
-      </ProductList>
-    );
   }
+
+  return (
+    <ProductList>
+      {products.map((product) => (
+        <li key={product.id}>
+          <img src={product.image} alt={product.title} />
+          <strong>{product.title}</strong>
+          <span>{product.priceFormatted}</span>
+
+          <button type="button" onClick={() => handleAddProduct(product.id)}>
+            <div>
+              <MdAddShoppingCart size={16} color="#FFF" />{' '}
+              {amountCart[product.id] || 0}
+            </div>
+
+            <span>ADICIONAR AO CARRINHO</span>
+          </button>
+        </li>
+      ))}
+    </ProductList>
+  );
 }
 
 const mapStateToProps = (state) => ({

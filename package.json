@@ -71,6 +71,7 @@
     "redux-saga": "Middleware  que consegue intercepta actions, sempre que dispara uma action esse Middleware  pode entrar em acao, fazendo algum efeito colateral (side efect), tipo: asincrono, chamada api, acesso banco dados.  Ex. qdo adiciona um produto no carrinho, busca api dados complementares do produto, tipo: peso, tamanho, etc.   ",
     "reactotron-redux-saga": "plugin do saga para o reactotron",
     "react-toastify": "biblioteca que mostra msg visual bonita, p exibir erros, msg de sucesso, ...",
-    "history": "biblioteca JS que serve para controlar parte de history API do navegador, que são as rotas que o react-router-dom utiliza"
+    "history": "biblioteca JS que serve para controlar parte de history API do navegador, que são as rotas que o react-router-dom utiliza",
+    "eslint-plugin-react-hooks": "plugin para eslint ajudar no desenvolvimento com hooks, ele ajuda no autocomplete e identificar erros no código."
   }
 }
