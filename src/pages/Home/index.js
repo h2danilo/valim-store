@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
+// import { bindActionCreators } from 'redux';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { formatPrice } from '../../util/format';
 import api from '../../services/api';
@@ -12,7 +12,7 @@ import { ProductList } from './styles';
 
 // import { Container } from './styles';
 
-function Home({ amountCart, addToCartRequest }) {
+export default function Home() {
   // abaixo qdo utiliza classe extend { Component }
   /* constructor(props) {
     super(props);
@@ -23,6 +23,15 @@ function Home({ amountCart, addToCartRequest }) {
 
   // abaixo utilizando hooks
   const [products, setProducts] = useState([]);
+
+  const amountCart = useSelector((state) =>
+    state.cart.reduce((sumAmountCart, product) => {
+      sumAmountCart[product.id] = product.amount;
+      return sumAmountCart;
+    }, {})
+  );
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function loadProducts() {
@@ -62,8 +71,8 @@ function Home({ amountCart, addToCartRequest }) {
 
     // ex. 2, acima faz msm coisa, porem, abaixo codigo esta resumido devido a ter add no final do codigo => const mapDispatchToProps
     // const { addToCartRequest } = this.props;
-
-    addToCartRequest(id);
+    // addToCartRequest(id);
+    dispatch(CartActions.addToCartRequest(id)); // trabalhando com useDispatch
   }
 
   return (
@@ -87,15 +96,3 @@ function Home({ amountCart, addToCartRequest }) {
     </ProductList>
   );
 }
-
-const mapStateToProps = (state) => ({
-  amountCart: state.cart.reduce((amountCart, product) => {
-    amountCart[product.id] = product.amount;
-    return amountCart;
-  }, {}),
-});
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(CartActions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);

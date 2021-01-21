@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { MdShoppingBasket } from 'react-icons/md';
 
@@ -9,8 +9,9 @@ import { Container, Cart } from './styles';
 
 import logo from '../../assets/images/logoValim.svg';
 
-function Header({ cartSize }) {
+export default function Header() {
   // console.log(cart);
+  const cartSize = useSelector((state) => state.cart.length);
 
   return (
     <Container>
@@ -28,8 +29,3 @@ function Header({ cartSize }) {
     </Container>
   );
 }
-
-// state.cart => .cart é nome do reducer que deseja acessar, para saber o nome do reducer olha em store/modules/rootReducer.js
-export default connect((state) => ({
-  cartSize: state.cart.length,
-}))(Header);
