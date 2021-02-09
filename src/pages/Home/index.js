@@ -8,7 +8,7 @@ import api from '../../services/api';
 // como actions retorna mais de uma funcao, qdo coloca o * o CartActions retorna todas as funcoes.
 import * as CartActions from '../../store/modules/cart/actions';
 
-import { ProductList } from './styles';
+import { ProductList, InfoText, PriceText } from './styles';
 
 // import { Container } from './styles';
 
@@ -44,7 +44,6 @@ export default function Home() {
 
       setProducts(data);
     }
-
     loadProducts();
   }, []);
 
@@ -80,17 +79,20 @@ export default function Home() {
       {products.map((product) => (
         <li key={product.id}>
           <img src={product.image} alt={product.title} />
-          <strong>{product.title}</strong>
-          <span>{product.priceFormatted}</span>
+          <div>
+            <strong>{product.title}</strong>
+            <InfoText>{product.info}</InfoText>
+            <PriceText>{product.priceFormatted}</PriceText>
 
-          <button type="button" onClick={() => handleAddProduct(product.id)}>
-            <div>
-              <MdAddShoppingCart size={16} color="#FFF" />{' '}
-              {amountCart[product.id] || 0}
-            </div>
+            <button type="button" onClick={() => handleAddProduct(product.id)}>
+              <div>
+                <MdAddShoppingCart size={16} color="#FFF" />{' '}
+                {amountCart[product.id] || 0}
+              </div>
 
-            <span>ADICIONAR AO CARRINHO</span>
-          </button>
+              <span>ADICIONAR</span>
+            </button>
+          </div>
         </li>
       ))}
     </ProductList>

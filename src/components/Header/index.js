@@ -7,7 +7,7 @@ import { MdShoppingBasket } from 'react-icons/md';
 import { Container, Cart } from './styles';
 // import { Container } from './styles';
 
-import logo from '../../assets/images/logoValim.svg';
+import logo from '../../assets/images/rt166.png';
 
 export default function Header() {
   // console.log(cart);
@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <Container>
       <Link to="/">
-        <img src={logo} alt="ValimShoes" />
+        <img src={logo} alt="cervejaria" />
       </Link>
 
       <Cart to="/Cart">

@@ -1,4 +1,14 @@
 {
+  "Menu": [
+    {
+      "id": 1,
+      "Description": "Destaques"
+    },
+    {
+      "id": 2,
+      "Description": "Cervejas Artesanais"
+    }
+  ],
   "stock": [
     {
       "id": 1,
@@ -28,39 +38,51 @@
   "products": [
     {
       "id": 1,
-      "title": "Tênis de Caminhada Leve Confortável",
-      "price": 179.9,
-      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg"
+      "title": "RT166 - Pilsen",
+      "info": " As cervejas Pilsen são de coloração dourada e espuma branca e macia, com aromas e sabores complexo do malte harmonizando com o lúpulo Saaz, além do processo de fabricação ser por levedos de baixa fermentação e água consideravelmente suave.",
+      "price": 8,
+      "image": "https://i.ibb.co/MMsZ2nz/pilsen3.jpg",
+      "idMenu": [1, 2]
     },
     {
       "id": 2,
-      "title": "Tênis VR Caminhada Confortável Detalhes Couro Masculino",
-      "price": 139.9,
-      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg"
+      "title": "RT166 - American IPA",
+      "info": "Mais que amargor, o lúpulo aqui deve trazer uma explosão de aromas nos copo e os mais encontrados são os cítricos, que podem lembrar: maracujá, laranja, manga, grapefruit, entre outras frutas.",
+      "price": 15,
+      "image": "https://i.ibb.co/q10LnTC/american-ipa.jpg",
+      "idMenu": [1, 2]
     },
     {
       "id": 3,
-      "title": "Tênis Adidas Duramo Lite 2.0",
-      "price": 219.9,
-      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg"
+      "title": "RT166 - Double IPA",
+      "info": "Com dose superior de lúpulo, Madalena Double IPA se destaca por possuir o característico amargor acentuado do estilo, mas de forma equilibrada, sem agressividade. Possui aroma cítrico pronunciado, coloração âmbar e espuma bastante cremosa.",
+      "price": 18,
+      "image": "https://i.ibb.co/gPyFC5F/double-ipa-3.jpg",
+      "idMenu": [1]
     },
     {
       "id": 5,
-      "title": "Tênis VR Caminhada Confortável Detalhes Couro Masculino",
-      "price": 139.9,
-      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg"
+      "title": "RT166 - German Weizen",
+      "info": "Uma cerveja de trigo alemã, de cor amarelo pálido, refrescante e efervescente com final seco. Como resultado da fermentação, apresenta no roma a notável características de banana e cravo.",
+      "price": 14,
+      "image": "https://i.ibb.co/Vx2fL3B/Webp-net-resizeimage-1.jpg",
+      "idMenu": [2]
     },
     {
       "id": 6,
-      "title": "Tênis Adidas Duramo Lite 2.0",
-      "price": 219.9,
-      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg"
+      "title": "RT166 - Stout",
+      "info": "As Stouts são cervejas de alta fermentação (tipo ALE), produzida com bastante malte torrado (ou cevada tostada), o que lhe confere alto/médio corpo e sabor tostado, além de uma cor muito escura, que é a característica mais marcante desse estilo.",
+      "price": 15,
+      "image": "https://i.ibb.co/J31TgQC/copo-com-stout-3.jpg",
+      "idMenu": [1]
     },
     {
       "id": 4,
-      "title": "Tênis de Caminhada Leve Confortável",
-      "price": 179.9,
-      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg"
+      "title": "RT166 - American Amber Ale",
+      "info": "No aroma, as American Amber Ale tem de baixo a moderado aroma de lúpulo com características típicas de variedades de lúpulo americano ou do Novo Mundo. Já o sabor é maltado de caramelo, podendo haver um balanço entre o dulçor e o amargor.",
+      "price": 16,
+      "image": "https://i.ibb.co/ydhVtBr/apa-1.jpg",
+      "idMenu": [2]
     }
   ]
 }

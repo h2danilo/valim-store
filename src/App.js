@@ -7,7 +7,8 @@ import { ToastContainer } from 'react-toastify';
 
 import './config/ReactotronConfig';
 
-import Header from './components/Header';
+// import Header from './components/Header';
+import SideBar from './components/SideBar';
 import Routes from './routes';
 import GlobalStyle from './styles/global';
 
@@ -20,7 +21,8 @@ function App() {
     <Provider store={store}>
       <Router history={history}>
         {/* <BrowserRouter> */}
-        <Header />
+        {/* <Header /> */}
+        <SideBar />
         <Routes />
         <GlobalStyle />
         <ToastContainer autoClose={3000} />

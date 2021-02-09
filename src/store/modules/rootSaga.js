@@ -3,8 +3,9 @@
 import { all } from 'redux-saga/effects';
 
 import cart from './cart/sagas';
+import home from './home/sagas';
 
 // qdo tiver mais sagas vai add no array ao lado do cart. ex. [cart, newsaga]
 export default function* rootSaga() {
-  return yield all([cart]);
+  return yield all([cart, home]);
 }
