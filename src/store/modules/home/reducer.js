@@ -9,8 +9,6 @@ export default function home(state = INITIAL_STATE, action) {
     case '@home/FILTER_MENU_SUCCESS': {
       return produce(state, (draft) => {
         const { product } = action.payload;
-
-        // draft.productList.push(product);
         draft.productList = product;
       });
     }

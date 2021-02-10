@@ -9,8 +9,6 @@ import { SideBarLink, SideBarLabel, DropDownLink } from './styles';
 
 function SubMenu({ item }) {
   const [subnav, setSubnav] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [menuSelect, setmenuSelect] = useState('1');
   const dispatch = useDispatch();
 
   const showSubnav = () => setSubnav(!subnav);
@@ -18,7 +16,6 @@ function SubMenu({ item }) {
   function saveMenuSelect(item) {
     const { id } = item;
 
-    setmenuSelect(id);
     dispatch(HomeActions.filterMenuRequest(id));
 
     if (item.subNav) {

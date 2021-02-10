@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { MdAddShoppingCart } from 'react-icons/md';
-import { formatPrice } from '../../util/format';
-import api from '../../services/api';
+// import { formatPrice } from '../../util/format';
+// import api from '../../services/api';
 
 // como actions retorna mais de uma funcao, qdo coloca o * o CartActions retorna todas as funcoes.
 import * as CartActions from '../../store/modules/cart/actions';
+import * as HomeActions from '../../store/modules/home/actions';
 
 import { ProductList, InfoText, PriceText } from './styles';
 
@@ -23,6 +24,7 @@ export default function Home() {
 
   // abaixo utilizando hooks
   const [products, setProducts] = useState([]);
+  const menuDefault = '1';
 
   const amountCart = useSelector((state) =>
     state.cart.reduce((sumAmountCart, product) => {
@@ -30,32 +32,31 @@ export default function Home() {
       return sumAmountCart;
     }, {})
   );
+  const productList = useSelector((state) => state.home.productList);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     async function loadProducts() {
-      const response = await api.get('products');
+      /* const response = await api.get('products');
 
       const data = response.data.map((product) => ({
         ...product,
         priceFormatted: formatPrice(product.price),
-      }));
+      })); */
 
-      setProducts(data);
+      setProducts(productList);
     }
     loadProducts();
-  }, []);
+  }, [productList]);
 
-  // abaixo qdo utiliza classe extend { Component }
-  /* async componentDidMount() {
-    const response = await api.get('products');
-    const data = response.data.map((product) => ({
-      ...product,
-      priceFormatted: formatPrice(product.price),
-    }));
-    this.setState({ products: data });
-  } */
+  // carregando filtro Inicial dos produtos
+  useEffect(() => {
+    async function loadFilterProductsDefault() {
+      dispatch(HomeActions.filterMenuRequest(menuDefault));
+    }
+    loadFilterProductsDefault();
+  }, [menuDefault, dispatch]);
 
   function handleAddProduct(id) {
     // dispatch => serve para disparar uma action ao redux, serve para dizer p redux que deseja fazer alguma acao
